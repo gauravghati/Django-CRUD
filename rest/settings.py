@@ -38,7 +38,42 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'basic_app',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders'
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ]
+}
+
+# CROS stands for CROSS ORIGIN RESOURCE SHARING
+
+# allow all origin to share resources
+CORS_ORIGIN_ALLOW_ALL = True
+
+# allow these methods to share data
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+]
+
+CORS_ALLOW_HEADERS  = [
+    'Username',
+    'accept',
+    'accept-encoding'
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with'
 ]
 
 MIDDLEWARE = [

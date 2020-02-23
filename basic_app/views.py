@@ -22,11 +22,10 @@ class Signup(APIView):
 
         return Response(list_of_user)
 
-    def post(self, request):    
-        received_json_data = json.loads(request.body.decode("utf-8"))   
-        phone = received_json_data['phone']
-        name = received_json_data['name']
-        age = received_json_data['age']
+    def post(self, request):
+        phone = request.data['phone']
+        name = request.data['name']
+        age = request.data['age']
 
         user_prof = UserProfile(name=name, age=age, phone=phone)
         user_prof.save()
@@ -55,11 +54,16 @@ class Question(APIView):
         return Response(list_of_question)
 
     def post(self, request):
-        received_json_data = json.loads(request.body.decode("utf-8"))
-        title = received_json_data['title']
-        text = received_json_data['text']
-        accuracy = received_json_data['accuracy']
+        # this will convert frontend state's into json (before adding cors setting)
+        # received_json_data = json.loads(request.body.decode("utf-8"))
+        # title = received_json_data['title']
+        # text = received_json_data['text']
+        # accuracy = received_json_data['accuracy']
 
+        # data will get into JSON format (after adding cors setting)
+        title = request.data['title']
+        text = request.data['text']
+        accuracy = request.data['accuracy']
         que = Questions(title=title, text=text, accuracy=accuracy)
         que.save()
 

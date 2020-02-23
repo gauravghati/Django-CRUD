@@ -1,2 +1,4 @@
 .idea
 myenv/
+basic_app/__pycache__/
+rest/__pycache__/
